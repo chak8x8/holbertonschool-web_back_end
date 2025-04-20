@@ -4,15 +4,22 @@ export class HolbertonClass {
     this._location = location;
   }
 
-  get year() { return this._year; }
-  get location() { return this._location; }
+  get year() {
+    return this._year;
+  }
+
+  get location() {
+    return this._location;
+  }
 }
 
 export class StudentHolberton {
   constructor(firstName, lastName, holbertonClass) {
     if (typeof firstName !== 'string') throw new TypeError('firstName must be a string');
     if (typeof lastName !== 'string') throw new TypeError('lastName must be a string');
-    if (!(holbertonClass instanceof HolbertonClass)) throw new TypeError('holbertonClass must be an instance of HolbertonClass');
+    if (!(holbertonClass instanceof HolbertonClass)) {
+      throw new TypeError('holbertonClass must be an instance of HolbertonClass');
+    }
 
     this._firstName = firstName;
     this._lastName = lastName;
@@ -42,4 +49,6 @@ const student3 = new StudentHolberton('Albert', 'Clinton', class2019);
 const student4 = new StudentHolberton('Donald', 'Bush', class2019);
 const student5 = new StudentHolberton('Jason', 'Sandler', class2019);
 
-export const listOfStudents = [student1, student2, student3, student4, student5];
+const listOfStudents = [student1, student2, student3, student4, student5];
+
+export default listOfStudents;
