@@ -4,7 +4,7 @@ export default function cleanSet(set, startString) {
   }
 
   // Filter set values that start with startString
-  let array = Array.from(set);
+  const array = Array.from(set);
   // Extract the remaining part of each string
   const filtered = array
     .filter((word) => typeof word === 'string' && word.startsWith(startString))
