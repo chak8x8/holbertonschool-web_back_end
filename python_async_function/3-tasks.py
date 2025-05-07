@@ -5,6 +5,7 @@ Module for creating an asyncio Task.
 
 import asyncio
 
+
 def task_wait_random(max_delay: int) -> asyncio.Task:
     """
     Creates an asyncio Task for wait_random with the specified max_delay.
