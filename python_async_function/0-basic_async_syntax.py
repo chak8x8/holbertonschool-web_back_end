@@ -5,7 +5,6 @@ Module for basic async coroutine.
 
 import asyncio
 import random
-from typing import Union
 
 
 async def wait_random(max_delay: int = 10) -> float:
