@@ -6,9 +6,10 @@ Module for running multiple coroutines concurrently.
 
 import asyncio
 from typing import List
+import importlib
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
-   wait_random = __import__('0-basic_async_syntax').wait_random
+   wait_random = importlib.import_module('0-basic_async_syntax').wait_random
    tasks = [wait_random(max_delay) for i in range(n)]
    delays = await asyncio.gather(*tasks)
    sorted_delays = []
