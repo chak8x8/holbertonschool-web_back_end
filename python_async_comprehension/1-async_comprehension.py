@@ -3,14 +3,13 @@
 Module for collecting random numbers using async comprehension.
 """
 
-import asyncio
 from typing import List
-from importlib import import_module as importlib_import
 
 
 async def async_comprehension() -> List[float]:
     """
-    Coroutine that collects 10 random numbers from async_generator using async comprehension.
+    Coroutine that collects 10 random numbers
+    from async_generator using async comprehension.
 
     Returns:
         List[float]: List of 10 random numbers.
