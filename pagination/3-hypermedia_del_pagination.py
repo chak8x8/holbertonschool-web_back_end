@@ -33,7 +33,8 @@ class Server:
         """
         if self.__indexed_dataset is None:
             dataset = self.dataset()
-            self.__indexed_dataset = {i: dataset[i] for i in range(len(dataset))}
+            self.__indexed_dataset = {i: dataset[i]\
+                                      for i in range(len(dataset))}
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
@@ -48,14 +49,16 @@ class Server:
             Dictionary with index, next_index, page_size, data
         """
 
-        assert isinstance(page_size, int) and page_size > 0, "page_size must be a positive integer"
+        assert isinstance(page_size, int) and page_size > 0,\
+            "page_size must be a positive integer"
         indexed_dataset = self.indexed_dataset()
         dataset_len = len(self.dataset())
 
         current_index = 0 if index is None else index
-        assert isinstance(current_index, int) and 0 <= current_index < dataset_len,\
+        assert isinstance(current_index, int)\
+            and 0 <= current_index < dataset_len,\
             "index must be a valid integer"
-        
+
         data = []
         next_index = current_index
         items_collected = 0
