@@ -40,14 +40,16 @@ class Server:
         """
         index_range = __import__('0-simple_helper_function').index_range
 
-        assert isinstance(page, int) and isinstance(page_size, int), "Page and page_size must be integers"
-        assert page > 0 and page_size > 0, "Page and page_size must be positive"
+        assert isinstance(page, int) and isinstance(page_size, int), \
+            "Page and page_size must be integers"
+        assert page > 0 and page_size > 0, \
+            "Page and page_size must be positive"
 
         start_index, end_index = index_range(page, page_size)
 
         dataset = self.dataset()
 
         if start_index >= len(dataset):
-            return [] 
+            return []
 
         return (dataset[start_index:end_index])
