@@ -50,14 +50,14 @@ class Server:
         """
 
         assert isinstance(page_size, int) and page_size > 0,\
-            "page_size must be a positive integer"
+             "page_size must be a positive integer"
         indexed_dataset = self.indexed_dataset()
         dataset_len = len(self.dataset())
 
         current_index = 0 if index is None else index
         assert isinstance(current_index, int)\
             and 0 <= current_index < dataset_len,\
-            "index must be a valid integer"
+             "index must be a valid integer"
 
         data = []
         next_index = current_index
