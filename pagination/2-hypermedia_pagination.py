@@ -63,7 +63,8 @@ class Server:
             page_size: Number of items per page (default 10)
 
         Returns:
-            Dictionary with page_size, page, data, next_page, prev_page, total_pages
+            Dictionary with page_size,\
+                page, data, next_page, prev_page, total_pages
         """
 
         data = self.get_page(page, page_size)
@@ -73,7 +74,8 @@ class Server:
         index_range = __import__('0-simple_helper_function').index_range
         start_index, _ = index_range(page, page_size)
 
-        next_page = page + 1 if start_index + page_size < len(dataset) else None
+        next_page = page + 1\
+            if start_index + page_size < len(dataset) else None
         prev_page = page - 1 if page > 1 else None
         total_pages = math.ceil(len(dataset) / page_size)
 
