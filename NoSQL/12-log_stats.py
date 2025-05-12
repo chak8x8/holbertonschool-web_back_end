@@ -9,14 +9,16 @@ if __name__ == "__main__":
     collection = client.logs.nginx
 
     # Count total documents
-    collection.count_documents({})
+    total_logs = collection.count_documents({})
+    print(f"{total_logs} logs")
 
-    # Count documents for each method: GET, POST, PUT, PATCH, DELETE
-    collection.count_documents({"method": "GET"})
-    collection.count_documents({"method": "POST"})
-    collection.count_documents({"method": "PUT"})
-    collection.count_documents({"method": "PATCH"})
-    collection.count_documents({"method": "DELETE"})
+    # Count documents for each method
+    methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    print("Methods:")
+    for method in methods:
+        count = collection.count_documents({"method": method})
+        print(f"\tmethod {method}: {count}")
 
     # Count documents with method=GET and path=/status
-    collection.count_documents({"method": "GET", "path": "/status"})
+    status_count = collection.count_documents({"method": "GET", "path": "/status"})
+    print(f"{status_count} status check")
