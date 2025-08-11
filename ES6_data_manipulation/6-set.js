@@ -1,5 +1,8 @@
+/**
+ * Creates a Set from an array, removing duplicates.
+ * @param {Array} array - The input array of any element type.
+ * @returns {Set} A Set containing unique elements from the input array.
+ */
 export default function setFromArray(array) {
-  // Create and return a Set from the input array
-  const set = new Set(array);
-  return set;
+  return new Set(array);
 }
