@@ -1,9 +1,9 @@
-console.log('Welcome to Holberton School, what is your name?');
+process.stdout.write('Welcome to Holberton School, what is your name? \r');
 
 process.stdin.setEncoding('utf8');
 
 process.stdin.on('data', (data) => {
-    console.log('Your name is: ' + data.trim());
+    process.stdout.write('Your name is: ' + data.trim() + '\r');
 });
 
 process.stdin.on('end', () => {
