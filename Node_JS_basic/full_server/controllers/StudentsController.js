@@ -3,10 +3,9 @@ import readDatabase from '../utils';
 class StudentsController {
     static getAllStudents(req, res) {
         res.set('Content-Type', 'text/plain');
-        res.write('This is the list of our students\n');
         readDatabase(process.argv[2])
             .then(groups => {
-                const output = [];
+                const output = ['This is the list of our students'];
                 const total = groups.CS.length + groups.SWE.length;
                 output.push(`Number of students: ${total}`);
                 for (const field in groups) {
@@ -14,7 +13,7 @@ class StudentsController {
                         output.push(`Number of students in ${field}: ${groups[field].length}. List: ${groups[field].join(', ')}`);
                     }
                 }
-                res.send(output.join('\n'));
+                res.send(output.join('\n')); // Single send
             })
             .catch(() => {
                 res.send('Cannot load the database');
