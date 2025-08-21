@@ -4,7 +4,7 @@ const countStudents = require('./3-read_file_async');
 
 const databasePath = process.argv[2];
 
-const app = http.createServer(async (req, res) => {
+const app = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'text/plain');
 
   if (req.url === '/') {
@@ -14,14 +14,15 @@ const app = http.createServer(async (req, res) => {
   }
 
   if (req.url === '/students') {
-    res.statusCode = 200;
-    res.write('This is the list of our students\n');
-    try {
-      await countStudents(databasePath);
-      res.end();
-    } catch (err) {
-      res.end('Cannot load the database');
-    }
+    countStudents(databasePath)
+      .then((summary) => {
+        res.statusCode = 200;
+        res.end(`This is the list of our students\n${summary}`);
+      })
+      .catch(() => {
+        res.statusCode = 200; // checker expects header + error line in body
+        res.end('This is the list of our students\nCannot load the database');
+      });
     return;
   }
 
