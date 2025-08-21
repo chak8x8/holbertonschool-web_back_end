@@ -1,10 +1,11 @@
+// 6-http_express.js
 const express = require('express');
 
 const app = express();
 
 app.get('/', (req, res) => {
-    res.set('Content-Type', 'text/plain');
-    res.send("Hello Holberton School!");
+  res.set('Content-Type', 'text/plain');
+  res.send('Hello Holberton School!');
 });
 
 app.listen(1245);
