@@ -3,7 +3,7 @@ const countStudents = require('./3-read_file_async');
 
 const databasePath = process.argv.slice(2);
 
-const app = http.createServer(async (res, req) => {
+const app = http.createServer(async (req, res) => {
     res.setHeader('Content-Type', 'text/plain');
     if (res.url === '/') {
         res.write('Hello Holberton School!');
