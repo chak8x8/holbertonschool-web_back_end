@@ -8,12 +8,17 @@ class StudentsController {
 
         try {
             const byField = await readDatabase(dbPath);
-            const fields = Object.keys(byField).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+
+            // keep lines short and readable
+            const cmp = (a, b) => a.toLowerCase().localeCompare(b.toLowerCase());
+            const fields = Object.keys(byField).sort(cmp);
 
             const lines = ['This is the list of our students'];
             fields.forEach((field) => {
                 const list = byField[field] || [];
-                lines.push(`Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`);
+                const listStr = list.join(', ');
+                const line = `Number of students in ${field}: ${list.length}. List: ${listStr}`;
+                lines.push(line);
             });
 
             res.status(200).send(lines.join('\n'));
